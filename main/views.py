@@ -11,11 +11,12 @@ def show_main(request):
     context = {
         'name': 'Rafi Ghani Harditama',
         'class': 'PBP E',
-        'item': item
+        'item': item,
+        'jumlah_item': item.count()
     }
     return render(request, "main.html", context)
 
-def create_product(request):
+def create_item(request):
     form = ItemForm(request.POST or None)
 
     if form.is_valid() and request.method == "POST":
@@ -23,7 +24,7 @@ def create_product(request):
         return HttpResponseRedirect(reverse('main:show_main'))
 
     context = {'form': form}
-    return render(request, "create_product.html", context)
+    return render(request, "create_item.html", context)
 
 def show_xml(request):
     data = Item.objects.all()

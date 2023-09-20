@@ -8,6 +8,9 @@
 
     <h5>Class:</h5>
     <p>{{class}}</p>
+
+    <p>Kamu menyimpan {{ jumlah_item }} item pada aplikasi ini </p>
+
     <table>
         <tr>
             <th>Name</th>
@@ -16,7 +19,7 @@
             <th>Type</th>
         </tr>
     
-        {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
+        {% comment %} Berikut cara memperlihatkan data item di bawah baris ini {% endcomment %}
     
         {% for item in items %}
             <tr>
@@ -30,7 +33,7 @@
     
     <br />
     
-    <a href="{% url 'main:create_product' %}">
+    <a href="{% url 'main:create_item' %}">
         <button>
             Add New Item
         </button>
