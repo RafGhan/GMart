@@ -23,19 +23,47 @@
     
         {% for i in item %}
             <tr>
-                <td>{{item.name}}</td>
-                <td>{{item.amount}}</td>
-                <td>{{item.description}}</td>
-                <td>{{item.type}}</td>
+                <td>{{i.name}}</td>
+                <td>{{i.amount}}</td>
+                <td>{{i.description}}</td>
+                <td>{{i.type}}</td>
+                <td>
+                    <form method="post" action="{% url 'main:add_amount' i.id %}">
+                        {% csrf_token %}
+                        <button type="submit">Add</button>
+                    </form>
+                </td>
+                <td> 
+                    <form method="post" action="{% url 'main:sub_amount' i.id %}">
+                        {% csrf_token %}
+                        <button type="submit">Subtraction</button>
+                    </form>
+                </td>
+                <td> 
+                    <form method="post" action="{% url 'main:remove_item' i.id %}">
+                        {% csrf_token %}
+                        <button type="submit">Remove</button>
+                    </form>
+                </td>
             </tr>
         {% endfor %}
     </table>
     
     <br />
+
+    <h5>Sesi terakhir login: {{ last_login }}</h5>
     
     <a href="{% url 'main:create_item' %}">
         <button>
             Add New Item
         </button>
     </a>
+
+    <a href="{% url 'main:logout' %}">
+        <button>
+            Logout
+        </button>
+    </a>
+
+
 {% endblock content %}
