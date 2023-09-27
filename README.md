@@ -1,5 +1,6 @@
 # TUGAS 2
 
+<details>
 <summary>1. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).</summary>
 
 - [x] Membuat sebuah proyek Django baru.
@@ -282,6 +283,7 @@ git push -u origin main
 * Pada bagian `Start Command` masukkan perintah `python manage.py migrate && gunicorn shopping_list.wsgi`
 * Masukkan nama aplikasi yang akan menjadi _domain_ web
 * Centang bagian `HTTP Listener on PORT` dan klik `Deploy App` untuk memulai proses deployment aplikasi.
+</details>
 
 <summary>2. Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.</summary>
 
