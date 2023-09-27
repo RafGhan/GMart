@@ -285,6 +285,7 @@ git push -u origin main
 * Centang bagian `HTTP Listener on PORT` dan klik `Deploy App` untuk memulai proses deployment aplikasi.
 </details>
 
+<details>
 <summary>2. Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.</summary>
 
 ![image](https://github.com/RafGhan/GMart/assets/124992862/a331d954-37ce-4a1e-af81-fb217799221b)
@@ -298,13 +299,17 @@ git push -u origin main
 * Database: Tempat dimana aplikasi web disimpan secara permanen. 
 
 Dalam pengembangan aplikasi web dengan Django, `urls.py` mengatur pola URL yang mengarahkan permintaan pengguna ke fungsi-fungsi views di `views.py`. Views berperan sebagai perantara antara model di `models.py` dan file template. Saat user melakukan permintaan, `urls.py` menentukan views yang akan menangani permintaan tersebut. Kemudian, views menggunakan model dari `models.py` untuk mengakses data dalam database sesuai dengan permintaan. Selanjutnya, views merender file Template yang sesuai dengan data dan mengirim respons ke pengguna sebagai halaman web. 
+</details>
 
+<details>
 <summary>3. Jelaskan mengapa kita menggunakan virtual environment? Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan virtual environment?</summary>
 
 _Virtual environment_ adalah alat yang digunakan untuk menciptakan suatu ruang lingkup virtual yang terisolasi secara independen dari _dependencies_ utama. Dengan _virtual environment_, dapat memungkinkan kita untuk menghindari konflik dari _dependencies-dependecies_ yang dapat saling bertabrakan.
 
 Walaupun kita dapat membuat aplikasi web berbasis Django tanpa menggunakan _virtual environment_, sangat disarankan untuk tetap menggunakan _virtual environment_ dalam pengembangan Django. Hal tersebut karena menggunakan _virtual environment_ merupakan _best practice_ karena dapat membantu proyek tetap terorganisir, mencegah terjadinya konflik, dan memudahkan manajemen dependensi. Dengan demikian, membuat aplikasi web berbasis Django dengan menggunakan _virtual environment_ merupakan _best practice_ dan lebih efektif dibandingkan dengan tidak menggunakannya.
+</details>
 
+<details>
 <summary>4. Jelaskan apakah itu MVC, MVT, MVVM dan perbedaan dari ketiganya.</summary>
 
 * MVC (Model-View-Controller) adalah konsep arsitektur yang memisahkan aplikasi menjadi 3 komponen yaitu Model, View dan Controller
@@ -323,9 +328,11 @@ Walaupun kita dapat membuat aplikasi web berbasis Django tanpa menggunakan _virt
   + ViewModel: komponen yang berfungsi untuk berinteraksi dengan model di mana data yang ada akan diteruskan ke layer view
 
 Perbedaan ketiganya terletak pada bagaimana komponen-komponen tersebut saling berinteraksi dan memisahkan tanggung jawab mereka dalam pengembangan aplikasi. MVC lebih terfokus pada pengendalian aliran aplikasi, MVT memisahkan tampilan dengan markup HTML
+</details>
 
 # TUGAS 3 
 
+<details>
 <summary>1. Apa perbedaan antara form POST dan form GET dalam Django?</summary>
 
 | POST   | GET   |
@@ -334,21 +341,26 @@ Perbedaan ketiganya terletak pada bagaimana komponen-komponen tersebut saling be
 |Memiliki batas ukuran data yang lebih besar dibandingkan ```GET```|Terbatas dalam ukuran data karena ada batasan panjang URL pada beberapa server dan browser|
 |Cocok untuk mengirim data sensitif karena tidak terlihat di URL| Kurang aman untuk data sensitif karena lebih mudah diakses oleh pengguna dengan URL|
 |Biasanya digunakan untuk mengirimkan data yang memiliki dampak terhadap server|Biasanya digunakan untuk mengirimkan data yang tidak berpengaruh terhadap server|
+</details>
 
+<details>
 <summary>2. Apa perbedaan utama antara XML, JSON, dan HTML dalam konteks pengiriman data?</summary>
 
 * XML merupakan _markup language_ yang digunakan untuk menyimpan dan mengirim data dalam format yang sangat fleksibel dengan struktur pohon dan _user_ dapat membuat tag tambahan sesuai dengan kebutuhan. Meskipun fleksibel, markup XML seringkali rumit dan sulit dibaca.
 * JSON merupakan format pengiriman yang cenderung sederhana dan mudah untuk dimengerti oleh manusia dengan pasangan key-value. Selain itu, JSON juga relatif ringan dibandingkan dngan format data lainnya. Hal tersebut membuatnya sangat efektif dalam pertukaran data dibandingkan dengan format data lainnya.
 * HTML adalah _markup language_ yang digunakan untuk membuat struktur dan tampilan halaman web. Berbeda dengan JSON dan XML yang dapat membuat tag mereka sendiri, HTML memiliki tag bawaan yang telah ditentukan sebelumnya untuk elemen-elemen seperti teks, gambar, tautan, dan lainnya.
+</details>
 
-
+<details>
 <summary>3. Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern?</summary>
 
 * JSON lebih mudah untuk dipahami karena memiliki format yang sederhana dan array yang mudah dipahami oleh manusia.
 * Fleksibel karena memungkinkan perubahan struktur data dengan mudah tanpa perlu mengubah skema secara signifikan.
 * JSON compatible dengan hampir semua bahsa pemrograman seperti JavaScript, Python, Ruby, Java, C#, dll
 * JSON adalah format data yang relatif ringan dibandingkan dngan format data lainnya, sehingga mengurangi latensi dan memungkinkan pertukaran data yang lebih cepat dibandingkan dengan format data lainnya.
+</details>
 
+<details>
 <summary>4. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).</summary>
 
 * Buat _folder_ ```templates``` pada _root folder_ dan buat _file_ HTML bernama ```base.html```. Isi dari ```base.html```:
@@ -580,6 +592,7 @@ def show_main(request):
 ```
 
 * menambahkan kode ```<p>Kamu menyimpan {{ jumlah_item }} item pada aplikasi ini </p>``` pada ```main.html``` di subdirektori ```templates``` yang ada di direktori ```main```
+</details>
 
 - [x] Mengakses kelima URL di poin 2 menggunakan Postman, membuat screenshot dari hasil akses URL pada Postman, dan menambahkannya ke dalam README.md.
 
@@ -600,6 +613,7 @@ def show_main(request):
 
 # TUGAS 4 
 
+<details>
 <summary>1. Apa itu Django ```UserCreationForm```, dan jelaskan apa kelebihan dan kekurangannya?</summary>
 ```UserCreationForm``` merupakan import yang terdapat pada ```django.contrib.auth.forms``` untuk membuat dan meregister akun baru dalam aplikasi web
 
@@ -611,15 +625,21 @@ Kelebihan:
 Kekurangan:
 * Form ini sudah menggunakan desain bawaan sehingga user tidak bisa mengubah desain tersebut
 * Tidak bisa dikostumisasi dengan mudah seperti menambahkan field baru karena form ini sudah bawaan dari Django
+</details>
 
+<details>
 <summary>2. Apa perbedaan antara autentikasi dan otorisasi dalam konteks Django, dan mengapa keduanya penting?</summary>
 
 Autentikasi adalah preses yang dilakukan untuk memverifikasi identitas user yang akan login ke dalam aplikasi web, seperti login dengan memasukkan username dan password. Sementara, otorisasi adalah pengendalian izin atas hal-hal yang boleh dilakukan seorang user dalam aplikasi web tersebut. Keduanya sama pentingnya untuk melindungi aplikasi web. Autentikasi mengecek keaslian pengguna yang dapat masuk ke dalam aplikasi web. Setelah terautentikasi, otorisasi memberikan hak dan informasi yang sesuai kepada user yang sudah terautentikasi dalam mengakses web aplikasi tersebut.  
+</details>
 
+<details>
 <summary>3. Apa itu cookies dalam konteks aplikasi web, dan bagaimana Django menggunakan cookies untuk mengelola data sesi pengguna?</summary>
 
 Dalam konteks aplikasi web, cookies adalah file kecil yang berisi informasi tentang data pengguna yang dikirim oleh web ke browser dan disimpan pada perangkat user. File ini berguna untuk mengelola data pengguna selama mengakses aplikasi web. Dalam Django, cookies digunakan untuk mengelola data sesi pengguna dengan menyimpan ID sesi dalam cookies di browser pengguna. Namun, data sesi yang sebenernya, seperti status masuk atau preferensi, disimpan di server Django. Cara kerjanya adalah saat pertama kali user mengakses aplikasi web, Django akan membuat ID sesi unik untuk user tersebut. Setiap kali pengguna membuat permintaan, ID sesi digunakan untuk mengidentifikasi sesi pengguna, memungkinkan Django untuk mengembalikan data sesi yang sesuai. 
+</details>
 
+<details>
 <summary>4. Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?</summary>
 
 Penggunaaan cookies dalam pengembagan web sebenernya cukup aman jika dikelola dengan benar. Namun, tidak menutup adanya risiko potensi yang tetap harus diwaspadai seperti serangan Cross-Site Scripting (XSS) atau Cross-Site Request Forgery (CSRF), kebocoran data, dan pelacakan oleh pihak ketiga. Meskipun begitu, kita tetap dapat mengurangi risiko tersebut salah satunya dengan menggunakan HTTPS.
@@ -938,3 +958,4 @@ path('remove/<int:id>/', remove_item, name='remove_item'),
     </form>
 </td>
 ```
+</details>
