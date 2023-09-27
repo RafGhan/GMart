@@ -599,9 +599,29 @@ def show_main(request):
 # TUGAS 4 
 
 1. Apa itu Django ```UserCreationForm```, dan jelaskan apa kelebihan dan kekurangannya?
+```UserCreationForm``` merupakan import yang terdapat pada ```django.contrib.auth.forms``` untuk membuat dan meregister akun baru dalam aplikasi web
+
+Kelebihan:
+* Form ini sudah dibuat secara default oleh Django sehingga user tidak perlu membuat kode untuk register sendiri
+* Sudah terintegrasi dengan sistem otentikasi Django, seperti login, logout, dll
+* Form ini sudah memiliki validasi bawaan untuk mengecek data user sudah sesuai syarat atau belum, seperti password yang dibuat sekuat mungkin dengan harus menggunakan elemen dan angka
+
+Kekurangan:
+* Form ini sudah menggunakan desain bawaan sehingga user tidak bisa mengubah desain tersebut
+* Tidak bisa dikostumisasi dengan mudah seperti menambahkan field baru karena form ini sudah bawaan dari Django
+
 2. Apa perbedaan antara autentikasi dan otorisasi dalam konteks Django, dan mengapa keduanya penting?
+
+Autentikasi adalah preses yang dilakukan untuk memverifikasi identitas user yang akan login ke dalam aplikasi web, seperti login dengan memasukkan username dan password. Sementara, otorisasi adalah pengendalian izin atas hal-hal yang boleh dilakukan seorang user dalam aplikasi web tersebut. Keduanya sama pentingnya untuk melindungi aplikasi web. Autentikasi mengecek keaslian pengguna yang dapat masuk ke dalam aplikasi web. Setelah terautentikasi, otorisasi memberikan hak dan informasi yang sesuai kepada user yang sudah terautentikasi dalam mengakses web aplikasi tersebut.  
+
 3. Apa itu cookies dalam konteks aplikasi web, dan bagaimana Django menggunakan cookies untuk mengelola data sesi pengguna?
+
+Dalam konteks aplikasi web, cookies adalah file kecil yang berisi informasi tentang data pengguna yang dikirim oleh web ke browser dan disimpan pada perangkat user. File ini berguna untuk mengelola data pengguna selama mengakses aplikasi web. Dalam Django, cookies digunakan untuk mengelola data sesi pengguna dengan menyimpan ID sesi dalam cookies di browser pengguna. Namun, data sesi yang sebenernya, seperti status masuk atau preferensi, disimpan di server Django. Cara kerjanya adalah saat pertama kali user mengakses aplikasi web, Django akan membuat ID sesi unik untuk user tersebut. Setiap kali pengguna membuat permintaan, ID sesi digunakan untuk mengidentifikasi sesi pengguna, memungkinkan Django untuk mengembalikan data sesi yang sesuai. 
+
 4. Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?
+
+Penggunaaan cookies dalam pengembagan web sebenernya cukup aman jika dikelola dengan benar. Namun, tidak menutup adanya risiko potensi yang tetap harus diwaspadai seperti serangan Cross-Site Scripting (XSS) atau Cross-Site Request Forgery (CSRF), kebocoran data, dan pelacakan oleh pihak ketiga. Meskipun begitu, kita tetap dapat mengurangi risiko tersebut salah satunya dengan menggunakan HTTPS.
+
 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
 
 - [x]  Mengimplementasikan fungsi registrasi, login, dan logout untuk memungkinkan pengguna untuk mengakses aplikasi sebelumnya dengan lancar.
@@ -855,4 +875,64 @@ def logout_user(request):
 * Pada berkas ```main.html```, tambahkan kode berikut diantara tabel dan tombol _logout_  untuk menampilkan data _last login_.
 ```
 <h5>Sesi terakhir login: {{ last_login }}</h5>
+```
+
+- [x] BONUS!Tambahkan tombol dan fungsi untuk menambahkan amount suatu objek sebanyak satu, tombol untuk mengurangi jumlah stok suatu objek sebanyak satu, dan tombol untuk menghapus suatu objek dari inventori.
+
+* Buat fungsi ```add_amount```, ```sub_amount```, dan ```remove_item``` pada ```views.py``` yang ada pada subdirektori ```main```
+```
+def add_amount(request, id):
+    if request == "POST":
+        item = Item.objects.get(pk=id)
+        item.amount += 1
+        item.save()
+    return HttpResponseRedirect(reverse('main:show_main'))
+
+def sub_amount(request, id):
+    if request == "POST":
+        item = Item.objects.get(pk=id)
+        if item > 1:
+            item.amount -= 1
+            item.save()
+        else:
+            item.delete()
+    return HttpResponseRedirect(reverse('main:show_main'))
+
+def remove_item(request, id):
+    if request == "POST":
+        item = Item.objects.get(pk=id)
+        item.delete()
+    return HttpResponseRedirect(reverse('main:show_main'))
+```
+
+* _import_ fungsi-fungsi tersebut pada ```urls.py``` yang ada di subdirektori ```main``` dan tambahkan _path url_ ke dalam ``` urlpatterns``` 
+```
+from main.views import add_amount, sub_amount, remove_item
+```
+```
+path('add/<int:id>/', add_amount, name='add_amount'),
+path('sub/<int:id>/', sub_amount, name='sub_amount'),
+path('remove/<int:id>/', remove_item, name='remove_item'),
+```
+
+* Tambahkan kode berikut di dalam tabel pada ```main.html```
+```
+<td>
+    <form method="post" action="{% url 'main:add_amount' i.id %}">
+        {% csrf_token %}
+        <button type="submit">Add</button>
+    </form>
+</td>
+<td> 
+    <form method="post" action="{% url 'main:sub_amount' i.id %}">
+        {% csrf_token %}
+        <button type="submit">Subtraction</button>
+    </form>
+</td>
+<td> 
+    <form method="post" action="{% url 'main:remove_item' i.id %}">
+        {% csrf_token %}
+        <button type="submit">Remove</button>
+    </form>
+</td>
 ```
