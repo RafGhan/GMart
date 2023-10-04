@@ -963,7 +963,7 @@ path('remove/<int:id>/', remove_item, name='remove_item'),
 # TUGAS 5
 
 <details>
-<sumary>1. Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya</sumary>
+<summary>1. Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya</summary>
 
 * Universal Selector (*)
 Universal selector bermanfaat untuk memilih semua elemen pada halaman. Biasanya digunakan untuk menetapkan nilai awal pada semua elemen
@@ -979,7 +979,7 @@ Class Selector memungkinkan kita untuk mengelompokkan elemen dengan karakteristi
 </details>
 
 <details>
-<sumary>2. Jelaskan HTML5 Tag yang kamu ketahui</sumary>
+<summary>2. Jelaskan HTML5 Tag yang kamu ketahui</summary>
 
 * ```<style>```: untuk menyisipkan kode CSS yang biasanya digunakan untuk mengatur dan merubah tampilan pada halaman web
 * ```<nav>```: untuk membuat navigasi berupa navigation bar yang biasanya digunakan untuk memberikan informasi penting dari halaman tersebut
@@ -998,13 +998,13 @@ Class Selector memungkinkan kita untuk mengelompokkan elemen dengan karakteristi
 </details>
 
 <details>
-<sumary>3. Jelaskan perbedaan antara margin dan padding</sumary>
+<summary>3. Jelaskan perbedaan antara margin dan padding</summary>
 
 Margin adalah sebuah ruang kosong atau jarak di luar elemen HTML yang mengatur jarak antar suatu elemen dengan elemen lainnya, sedangkan Padding adalah ruang kosong atau jarak di dalam elemen HTML yang mengatur jarak antara konten konten dan batasannya pada elemen HTML tersebut. Intinya, Margin mengatur jarak antar elemen, sedangkan padding mengatur tampilan konten elemen.
 </details>
 
 <details>
-<sumary>4. Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?</sumary>
+<summary>4. Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?</summary>
 
 | Bootstrap   | Tailwind   |
 | ---         | ---        |
@@ -1016,7 +1016,7 @@ Bootstrap lebih cocok digunakan ketika kita ingin membuat proyek dengan yang mem
 </details>
 
 <details>
-<sumary>5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial). </sumary>
+<summary>5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial). </summary>
 
 * Menambahkan bootstrap
     + tambahkan kode berikut dalam ```base.html``` agar halaman dapat menyesuaikan ukuran dan perilaku perangkat mobile
