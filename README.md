@@ -964,7 +964,6 @@ path('remove/<int:id>/', remove_item, name='remove_item'),
 
 <details>
 <sumary>1. Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya</sumary>
-</details>
 
 * Universal Selector (*)
 Universal selector bermanfaat untuk memilih semua elemen pada halaman. Biasanya digunakan untuk menetapkan nilai awal pada semua elemen
@@ -977,10 +976,10 @@ ID selector menggunakan ID pada tag sebagai selector-nya. ID bersifat unik dalam
 
 * Class Selector (.)
 Class Selector memungkinkan kita untuk mengelompokkan elemen dengan karakteristik yang sama. Cocok ketika ingin mengganti gaya elemen tertentu yang memiliki class yang sama.
+</details>
 
 <details>
 <sumary>2. Jelaskan HTML5 Tag yang kamu ketahui</sumary>
-</details>
 
 * ```<style>```: untuk menyisipkan kode CSS yang biasanya digunakan untuk mengatur dan merubah tampilan pada halaman web
 * ```<nav>```: untuk membuat navigasi berupa navigation bar yang biasanya digunakan untuk memberikan informasi penting dari halaman tersebut
@@ -996,16 +995,16 @@ Class Selector memungkinkan kita untuk mengelompokkan elemen dengan karakteristi
 * ```<img>```: untuk menampilkan gambar pada web
 * ```<script>```: untuk memasukkan kode javascript
 * dst
+</details>
 
 <details>
 <sumary>3. Jelaskan perbedaan antara margin dan padding</sumary>
-</details>
 
 Margin adalah sebuah ruang kosong atau jarak di luar elemen HTML yang mengatur jarak antar suatu elemen dengan elemen lainnya, sedangkan Padding adalah ruang kosong atau jarak di dalam elemen HTML yang mengatur jarak antara konten konten dan batasannya pada elemen HTML tersebut. Intinya, Margin mengatur jarak antar elemen, sedangkan padding mengatur tampilan konten elemen.
+</details>
 
 <details>
 <sumary>4. Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?</sumary>
-</details>
 
 | Bootstrap   | Tailwind   |
 | ---         | ---        |
@@ -1014,6 +1013,7 @@ Margin adalah sebuah ruang kosong atau jarak di luar elemen HTML yang mengatur j
 |Lebih terbatas jika ingin melakukan kostumisasi karena memiliki banyak komponen bawaan yang sudah didefinisikan|lebih fleksibel untuk hal kostumisasi|
 
 Bootstrap lebih cocok digunakan ketika kita ingin membuat proyek dengan yang membutuhkan pengembangan cepat karena sudah disediakan komponen siap pakai dan gaya yang konsisten. Sedangkan Tailwind lebih cocok digunakan ketika kita yang membutuhkan kreativitas dalam merancang tampilan web karena lebih fleksibel jika ingin kostumisasi komponen pada web tersebut.
+</details>
 
 <details>
 <sumary>5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial). </sumary>
