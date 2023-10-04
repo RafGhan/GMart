@@ -1,4 +1,6 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
+
+{% load static %}
 
 {% block content %}
 
@@ -14,7 +16,7 @@
         height: 100vh;
     }
 
-    .add-item {
+    .edit-item {
         background-color: rgba(255, 255, 255, 0.9); 
         padding: 20px;
         border-radius: 10px;
@@ -50,21 +52,21 @@
 
 </style>
 
-<h1>Add New Item</h1>
-
-<div class=" add-item">
+<h1>Edit Item</h1>
+<div class=" edit-item">
     <form method="POST">
         {% csrf_token %}
-            <table>
-                {{ form.as_table }}
-                <tr>
-                    <td></td>
-                    <td>
-                        <input type="submit" value="Add Item"/>
-                    </td>
-                </tr>
-            </table>
+        <table>
+            {{ form.as_table }}
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Edit Item"/>
+                </td>
+            </tr>
+        </table>
     </form>
 </div>
+
 
 {% endblock %}

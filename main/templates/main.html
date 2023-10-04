@@ -1,69 +1,158 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <style>
+        body {
+            background-image: url('https://media.discordapp.net/attachments/1020337769505116261/1158800181354037299/Woolworths___Signage_Design___McCartney_Design.jpg?ex=651d9044&is=651c3ec4&hm=04c5048ee5d374936c9de5821968f6fb2219398744494f1cbfbf89558516e4aa&=&width=918&height=612');
+            background-size: cover;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+        }
+        .user-info {
+            background-color: rgba(255, 255, 255, 0.9); 
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #000000;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #FEC89A;
+        }
+
+        table tr:last-child {
+            background-color: #FEC89A; 
+        }
+
+        button {
+            background-color: #FEC89A;
+            color: #000000;
+            border: none;
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 4px;
+            border: 1px solid #000000;
+        }
+
+        button:hover {
+            background-color: #F8EDEB;
+            color: #FEC89A;
+        }
+
+        .navbar {
+            background-color: #FEC89A; 
+        }
+    </style>
+
+    <nav class="navbar navbar-expand-lg bg-body-primary">
+        
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'main:logout' %}">GMart</a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a >{{name}}</a>
+                </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'main:logout' %}">Logout</a>
+                    </li>
+                    </ul>
+            </div>
+        </div>
+    </nav>
+
     <h1>GMart Page</h1>
 
-    <h5>Name:</h5>
-    <p>{{name}}</p>
+    <div class="user-info">
+        <h5>Name:</h5>
+        <p>{{ name }}</p>
 
-    <h5>Class:</h5>
-    <p>{{class}}</p>
+        <h5>Class:</h5>
+        <p>{{ class }}</p>
 
-    <p>Kamu menyimpan {{ jumlah_item }} item pada aplikasi ini </p>
-
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Amount</th>
-            <th>Description</th>
-            <th>Type</th>
-        </tr>
+        <p>Kamu menyimpan {{ jumlah_item }} item pada aplikasi ini</p>
     
-        {% comment %} Berikut cara memperlihatkan data item di bawah baris ini {% endcomment %}
-    
-        {% for i in item %}
+
+        <table>
             <tr>
-                <td>{{i.name}}</td>
-                <td>{{i.amount}}</td>
-                <td>{{i.description}}</td>
-                <td>{{i.type}}</td>
-                <td>
-                    <form method="post" action="{% url 'main:add_amount' i.id %}">
-                        {% csrf_token %}
-                        <button type="submit">Add</button>
-                    </form>
-                </td>
-                <td> 
-                    <form method="post" action="{% url 'main:sub_amount' i.id %}">
-                        {% csrf_token %}
-                        <button type="submit">Subtraction</button>
-                    </form>
-                </td>
-                <td> 
-                    <form method="post" action="{% url 'main:remove_item' i.id %}">
-                        {% csrf_token %}
-                        <button type="submit">Remove</button>
-                    </form>
-                </td>
+                <th>Name</th>
+                <th>Amount</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
             </tr>
-        {% endfor %}
-    </table>
-    
-    <br />
+        
+            {% comment %} Berikut cara memperlihatkan data item di bawah baris ini {% endcomment %}
+        
+            {% for i in item %}
+                <tr>
+                    <td>{{i.name}}</td>
+                    <td>{{i.amount}}</td>
+                    <td>{{i.description}}</td>
+                    <td>{{i.type}}</td>
+                    <td>
+                        <form method="post" action="{% url 'main:add_amount' i.pk %}">
+                            {% csrf_token %}
+                            <button type="submit">Add</button>
+                        </form>
+                    </td>
+                    <td> 
+                        <form method="post" action="{% url 'main:sub_amount' i.pk %}">
+                            {% csrf_token %}
+                            <button type="submit">Subtraction</button>
+                        </form>
+                    </td>
+                    <td>
+                        <a href="{% url 'main:edit_item' i.pk %}">
+                            <button>
+                                Edit
+                            </button>
+                        </a>
+                    </td>
+                    <td> 
+                        <form method="post" action="{% url 'main:remove_item' i.pk %}">
+                            {% csrf_token %}
+                            <button type="submit">Remove</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+        
+        <br />
 
-    <h5>Sesi terakhir login: {{ last_login }}</h5>
-    
-    <a href="{% url 'main:create_item' %}">
-        <button>
-            Add New Item
-        </button>
-    </a>
+        <h5>Sesi terakhir login: {{ last_login }}</h5>
+        
+        <a href="{% url 'main:create_item' %}">
+            <button>
+                Add New Item
+            </button>
+        </a>
 
-    <a href="{% url 'main:logout' %}">
-        <button>
-            Logout
-        </button>
-    </a>
-
+        <a href="{% url 'main:logout' %}">
+            <button>
+                Logout
+            </button>
+        </a>
+    </div>
 
 {% endblock content %}

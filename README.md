@@ -959,3 +959,456 @@ path('remove/<int:id>/', remove_item, name='remove_item'),
 </td>
 ```
 </details>
+
+# TUGAS 5
+
+<details>
+<sumary>1. Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya</sumary>
+</details>
+
+* Universal Selector (*)
+Universal selector bermanfaat untuk memilih semua elemen pada halaman. Biasanya digunakan untuk menetapkan nilai awal pada semua elemen
+
+* Element Selector
+Element Selector memungkinkan kita mengubah properti untuk semua elemen yang memiliki tag HTML yang sama. Berguna ketika ingin mengubah gaya untuk semua elemen HTML.
+
+* ID Selector (#)
+ID selector menggunakan ID pada tag sebagai selector-nya. ID bersifat unik dalam satu halaman web. ID dapat ditambahkan pada halaman template HTML. Cocok digunakan untuk memilih elemen dengan atribut id tertentu pada halaman.
+
+* Class Selector (.)
+Class Selector memungkinkan kita untuk mengelompokkan elemen dengan karakteristik yang sama. Cocok ketika ingin mengganti gaya elemen tertentu yang memiliki class yang sama.
+
+<details>
+<sumary>2. Jelaskan HTML5 Tag yang kamu ketahui</sumary>
+</details>
+
+* ```<style>```: untuk menyisipkan kode CSS yang biasanya digunakan untuk mengatur dan merubah tampilan pada halaman web
+* ```<nav>```: untuk membuat navigasi berupa navigation bar yang biasanya digunakan untuk memberikan informasi penting dari halaman tersebut
+* ```<div>```: untuk mengelompokan bagian-bagian pada halaman web tersebut
+* ```<a>```: untuk memberikan tautan ke web, file, ataupun url eksternal lainnya
+* ```<h1>```: untuk mengatur teks menjadi judul tingkat 1
+* ```<table>```: digunakan untuk membuat table
+* ```<tr>, <th>, <td>```: elemen elemen pada tabel, tr = menyatakan baris, th: heading dari table tersebut(biasanya baris pertama), td: menyatakan kolom.
+* ```<button>```: untuk membuat tombol yang dapat dipencet dan melakukan sebuah perintah
+* ```<form>```: membuat formulir/input untuk memasukan data yang nantinya akan disimpan
+* ```<header>```: untuk mendefinisikan header atau bagian atas halaman web
+* ```<p>```: untuk membuat paragraf
+* ```<img>```: untuk menampilkan gambar pada web
+* ```<script>```: untuk memasukkan kode javascript
+* dst
+
+<details>
+<sumary>3. Jelaskan perbedaan antara margin dan padding</sumary>
+</details>
+
+Margin adalah sebuah ruang kosong atau jarak di luar elemen HTML yang mengatur jarak antar suatu elemen dengan elemen lainnya, sedangkan Padding adalah ruang kosong atau jarak di dalam elemen HTML yang mengatur jarak antara konten konten dan batasannya pada elemen HTML tersebut. Intinya, Margin mengatur jarak antar elemen, sedangkan padding mengatur tampilan konten elemen.
+
+<details>
+<sumary>4. Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?</sumary>
+</details>
+
+| Bootstrap   | Tailwind   |
+| ---         | ---        |
+|Bootstrap memiliki komponen yang sudah didefinisikan, sehingga kita mendapatkan komponen siap pakai dan dapay langsung digunakan|Tailwind CSS memberikan kontrol lebih kepada kita untuk merancang sendiri tampilan kita|
+|memiliki ukuran file CSS yang lebih besar karena sudah memiliki banyak komponen bawaan yang sudah didefinisikan|memiliki ukuran file CSS yang lebih ringan dibandingkan Bootstrap|
+|Lebih terbatas jika ingin melakukan kostumisasi karena memiliki banyak komponen bawaan yang sudah didefinisikan|lebih fleksibel untuk hal kostumisasi|
+
+Bootstrap lebih cocok digunakan ketika kita ingin membuat proyek dengan yang membutuhkan pengembangan cepat karena sudah disediakan komponen siap pakai dan gaya yang konsisten. Sedangkan Tailwind lebih cocok digunakan ketika kita yang membutuhkan kreativitas dalam merancang tampilan web karena lebih fleksibel jika ingin kostumisasi komponen pada web tersebut.
+
+<details>
+<sumary>5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial). </sumary>
+
+* Menambahkan bootstrap
+    + tambahkan kode berikut dalam ```base.html``` agar halaman dapat menyesuaikan ukuran dan perilaku perangkat mobile
+    ```
+    <head>
+        {% block meta %}
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% endblock meta %}
+    </head>
+    ```
+    + Tambahkan Bootstrap CSS dan juga JS.
+    CSS
+    ```
+    <head>
+        {% block meta %}
+            ...
+        {% endblock meta %}
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    </head>
+    ```
+    JS
+    ```
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+J4jsl5c9zdLKaUk5Ae5f5b1bw6AUn5f5v8FZJoMxm6f5cH1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    ```
+
+* Menambahkan fitur edit pada apikasi
+
+    + tambahkan fungsi ```edit_item``` pada ```views.py```
+    ```
+    def edit_item(request, id):
+    item = Item.objects.get(pk = id)
+
+    form = ItemForm(request.POST or None, instance=item)
+
+    if form.is_valid() and request.method == "POST":
+        form.save()
+        return HttpResponseRedirect(reverse('main:show_main'))
+
+    context = {'form': form}
+    return render(request, "edit_item.html", context)
+    ```
+
+    + buat file baru ```edit_item.html``` pada ```main/templates```
+    ```
+    {% extends 'base.html' %}
+
+    {% load static %}
+
+    {% block content %}
+
+    <h1>Edit Product</h1>
+    <div class=" edit-item">
+        <form method="POST">
+            {% csrf_token %}
+            <table>
+                {{ form.as_table }}
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" value="Edit Item"/>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    {% endblock %}
+    ```
+
+    + tambahkan ```<style>``` untuk merubah tampilan halaman
+    ```
+    <style>
+        body {
+            background-image: url('https://media.discordapp.net/attachments/1020337769505116261/1158800181354037299/Woolworths___Signage_Design___McCartney_Design.jpg?ex=651d9044&is=651c3ec4&hm=04c5048ee5d374936c9de5821968f6fb2219398744494f1cbfbf89558516e4aa&=&width=918&height=612');
+            background-size: cover;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh;
+        }
+
+        .edit-item {
+            background-color: rgba(255, 255, 255, 0.9); 
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+
+        table {
+            margin: 0 auto;
+        }
+
+
+        input[type="submit"] {
+            font-family: arial;
+            font-weight: bold;
+            color: #000000 !important;
+            font-size: 11px;
+            text-shadow: 0px 0px 0px #F8EDEB;
+            box-shadow: 1px 1px 1px #F8EDEB;
+            padding: 9px 16px;
+            border-radius: 40px;
+            border: 1px solid #000000;
+            background: #FEC89A;
+        }
+        input[type="submit"]:hover {
+            color: #F8EDEB !important;
+            background: #FEC89A;
+        }
+
+    </style>
+    ```
+
+    + _import_ fungsi ```ediy_item``` pada ```urls.py``` dan tambahkan pathnya
+    ```from main.views import edit_item```
+    ```path('edit-item/<int:id>', edit_item, name='edit_item'),```
+
+- [x]  Kustomisasi halaman login, register, dan tambah inventori semenarik mungkin.
+
+* Login
+
+    + tambahkan _style_ untuk merubah tampilan pada login.html. isinya
+    ```
+    <style>
+        body{
+            background-image: url('https://media.discordapp.net/attachments/1020337769505116261/1158780706282025070/DreamShaper_v7_make_me_a_background_for_login_page_that_contai_1.jpg?ex=651d7e21&is=651c2ca1&hm=55c53ac87544e149bc2a2fa2cba41556ff7bf9d21f7930f30958d863828c81e3&=&width=993&height=662'); 
+            background-size: cover; 
+            background-repeat: no-repeat; 
+            display: flex;
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+        }
+        .login {
+            background-color: rgba(255, 255, 255, 0.9); 
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        table {
+            margin: 0 auto; 
+            margin-bottom: 10px;
+        }
+
+        .form-control {
+            width: 100%; 
+        }
+
+        .logbttnstyle {
+            font-weight: bold;
+            color: #F8EDEB !important;
+            font-size: 11px;
+            text-shadow: 0px 0px 0px #F8EDEB;
+            box-shadow: 1px 1px 1px #F8EDEB;
+            padding: 9px 16px;
+            border-radius: 40px;
+            border: 0px solid #FEC89A;
+            background: #FEC89A;
+            margin-bottom: 10px;
+        }
+        .logbttnstyle:hover {
+            color: #F8EDEB !important;
+            background: #FEC89A;
+        }
+    </style>
+    ```
+
+    + tambahkan ```logbttnstyle``` pada class di button login untuk merubah tampilan button
+    ```<td><input class="btn login_btn logbttnstyle" type="submit" value="Login"></td>```
+
+* Register
+
+    + tambahkan _style_ untuk merubah tampilan pada register.html. isinya
+    ```
+    <style>
+        body{
+            background-image: url('https://media.discordapp.net/attachments/1020337769505116261/1158780706282025070/DreamShaper_v7_make_me_a_background_for_login_page_that_contai_1.jpg?ex=651d7e21&is=651c2ca1&hm=55c53ac87544e149bc2a2fa2cba41556ff7bf9d21f7930f30958d863828c81e3&=&width=993&height=662'); 
+            background-size: cover; 
+            background-repeat: no-repeat; 
+            display: flex;
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+        }
+
+        .login {
+            background-color: rgba(255, 255, 255, 0.9); 
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        table {
+            margin: 0 auto; 
+        }
+
+        .form-control {
+            width: 100%; 
+        }
+
+        input[type="submit"] {
+            font-family: arial;
+            font-weight: bold;
+            color: #F8EDEB !important;
+            font-size: 11px;
+            text-shadow: 0px 0px 0px #F8EDEB;
+            box-shadow: 1px 1px 1px #F8EDEB;
+            padding: 9px 16px;
+            border-radius: 40px;
+            border: 0px solid #FEC89A;
+            background: #FEC89A;
+        }
+        input[type="submit"]:hover {
+            color: #F8EDEB !important;
+            background: #FEC89A;
+        }
+    </style>
+    ```
+
+* Create item
+
+    + tambahkan _style_ untuk merubah tampilan pada create_item.html. isinya
+    ```
+    {% extends 'base.html' %} 
+
+    {% block content %}
+
+    <style>
+        body {
+            background-image: url('https://media.discordapp.net/attachments/1020337769505116261/1158800181354037299/Woolworths___Signage_Design___McCartney_Design.jpg?ex=651d9044&is=651c3ec4&hm=04c5048ee5d374936c9de5821968f6fb2219398744494f1cbfbf89558516e4aa&=&width=918&height=612');
+            background-size: cover;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh;
+        }
+
+        .add-item {
+            background-color: rgba(255, 255, 255, 0.9); 
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+
+        table {
+            margin: 0 auto;
+        }
+
+
+        input[type="submit"] {
+            font-family: arial;
+            font-weight: bold;
+            color: #000000 !important;
+            font-size: 11px;
+            text-shadow: 0px 0px 0px #F8EDEB;
+            box-shadow: 1px 1px 1px #F8EDEB;
+            padding: 9px 16px;
+            border-radius: 40px;
+            border: 1px solid #000000;
+            background: #FEC89A;
+        }
+        input[type="submit"]:hover {
+            color: #F8EDEB !important;
+            background: #FEC89A;
+        }
+
+    </style>
+
+    <h1>Add New Item</h1>
+
+    <div class=" add-item">
+        <form method="POST">
+            {% csrf_token %}
+                <table>
+                    {{ form.as_table }}
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" value="Add Item"/>
+                        </td>
+                    </tr>
+                </table>
+        </form>
+    </div>
+
+    {% endblock %}
+    ```
+
+- [x] Kustomisasi halaman daftar inventori menjadi lebih berwarna maupun menggunakan apporach lain seperti menggunakan Card.
+
+    + menambahkan navbar pada halaman main dengan menambahkan kode ini
+    ```
+    <nav class="navbar navbar-expand-lg bg-body-primary">
+        
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'main:logout' %}">GMart</a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a >{{name}}</a>
+                </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'main:logout' %}">Logout</a>
+                    </li>
+                    </ul>
+            </div>
+        </div>
+    </nav>
+    ```
+
+    + tambahkan _style_ untuk merubah tampilan seperti warna background, font, button, dan menambahkan gambar background pada create_item.html. isi dari style
+    ```
+    <style>
+        body {
+            background-image: url('https://media.discordapp.net/attachments/1020337769505116261/1158800181354037299/Woolworths___Signage_Design___McCartney_Design.jpg?ex=651d9044&is=651c3ec4&hm=04c5048ee5d374936c9de5821968f6fb2219398744494f1cbfbf89558516e4aa&=&width=918&height=612');
+            background-size: cover;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+        }
+        .user-info {
+            background-color: rgba(255, 255, 255, 0.9); 
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #000000;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #FEC89A;
+        }
+
+        button {
+            background-color: #FEC89A;
+            color: #F8EDEB;
+            border: none;
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #F8EDEB;
+            color: #FEC89A;
+        }
+
+        .navbar {
+            background-color: #FEC89A; 
+        }
+    </style>
+    ```
+
+    - [x] BONUS!  Memberikan warna yang berbeda (teks atau background) pada baris terakhir dari item pada inventori anda menggunakan CSS.
+    
+    * Ganti warna _background_ dengan menambahkan kode tersebut pada ```<style>```
+    ```
+    table tr:last-child {
+            background-color: #FEC89A; 
+        }
+    ```
+
+</details>

@@ -87,24 +87,35 @@ def logout_user(request):
     return response
 
 def add_amount(request, id):
-    if request == "POST":
-        item = Item.objects.get(pk=id)
-        item.amount += 1
-        item.save()
+    
+    item = Item.objects.get(pk=id)
+    item.amount += 1
+    item.save()
     return HttpResponseRedirect(reverse('main:show_main'))
 
 def sub_amount(request, id):
-    if request == "POST":
-        item = Item.objects.get(pk=id)
-        if item > 1:
-            item.amount -= 1
-            item.save()
-        else:
-            item.delete()
+    
+    item = Item.objects.get(pk=id)
+    if item.amount > 1:
+        item.amount -= 1
+        item.save()
+    else:
+        item.delete()
     return HttpResponseRedirect(reverse('main:show_main'))
 
 def remove_item(request, id):
-    if request == "POST":
-        item = Item.objects.get(pk=id)
-        item.delete()
+    item = Item.objects.get(pk=id)
+    item.delete()
     return HttpResponseRedirect(reverse('main:show_main'))
+
+def edit_item(request, id):
+    item = Item.objects.get(pk = id)
+
+    form = ItemForm(request.POST or None, instance=item)
+
+    if form.is_valid() and request.method == "POST":
+        form.save()
+        return HttpResponseRedirect(reverse('main:show_main'))
+
+    context = {'form': form}
+    return render(request, "edit_item.html", context)
