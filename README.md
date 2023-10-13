@@ -1,3 +1,5 @@
+Link Aplikasi : https://rafi-ghani-tugas.pbp.cs.ui.ac.id/
+
 # TUGAS 2
 
 <details>
