@@ -8,8 +8,9 @@
             background-repeat: no-repeat;
             font-family: Arial, sans-serif;
         }
+
         .user-info {
-            background-color: rgba(255, 255, 255, 0.9); 
+            background-color: rgba(255, 255, 255, 0.9);
             padding: 20px;
             border-radius: 10px;
         }
@@ -18,24 +19,25 @@
             text-align: center;
         }
 
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
+        .card {
+            background-color: #FFF;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            margin: 10px;
+            padding: 10px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
         }
 
-        th, td {
-            border: 1px solid #000000;
-            padding: 8px;
-            text-align: left;
+        .last-card {
+            background-color: #FEC89A; /* Background color for the last card */
         }
 
-        th {
-            background-color: #FEC89A;
+        .card-title {
+            font-size: 24px;
         }
 
-        table tr:last-child {
-            background-color: #FEC89A; 
+        .card-description {
+            font-size: 16px;
         }
 
         button {
@@ -59,20 +61,19 @@
     </style>
 
     <nav class="navbar navbar-expand-lg bg-body-primary">
-        
         <div class="container-fluid">
             <a class="navbar-brand" href="{% url 'main:logout' %}">GMart</a>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a >{{name}}</a>
-                </li>
+                    <li class="nav-item">
+                        <a>{{ name }}</a>
+                    </li>
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{% url 'main:logout' %}">Logout</a>
                     </li>
-                    </ul>
+                </ul>
             </div>
         </div>
     </nav>
@@ -87,72 +88,106 @@
         <p>{{ class }}</p>
 
         <p>Kamu menyimpan {{ jumlah_item }} item pada aplikasi ini</p>
-    
 
-        <table>
-            <tr>
-                <th>Name</th>
-                <th>Amount</th>
-                <th>Description</th>
-                <th>Type</th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
-        
-            {% comment %} Berikut cara memperlihatkan data item di bawah baris ini {% endcomment %}
-        
-            {% for i in item %}
-                <tr>
-                    <td>{{i.name}}</td>
-                    <td>{{i.amount}}</td>
-                    <td>{{i.description}}</td>
-                    <td>{{i.type}}</td>
-                    <td>
-                        <form method="post" action="{% url 'main:add_amount' i.pk %}">
-                            {% csrf_token %}
-                            <button type="submit">Add</button>
-                        </form>
-                    </td>
-                    <td> 
-                        <form method="post" action="{% url 'main:sub_amount' i.pk %}">
-                            {% csrf_token %}
-                            <button type="submit">Subtraction</button>
-                        </form>
-                    </td>
-                    <td>
-                        <a href="{% url 'main:edit_item' i.pk %}">
-                            <button>
-                                Edit
-                            </button>
-                        </a>
-                    </td>
-                    <td> 
-                        <form method="post" action="{% url 'main:remove_item' i.pk %}">
-                            {% csrf_token %}
-                            <button type="submit">Remove</button>
-                        </form>
-                    </td>
-                </tr>
-            {% endfor %}
-        </table>
-        
+        <div id="item_table"></div>
+
         <br />
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Item</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="form" onsubmit="return false;">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="name" class="col-form-label">Name:</label>
+                                <input type="text" class="form-control" id="name" name="name"></input>
+                            </div>
+                            <div class="mb-3">
+                                <label for="amount" class="col-form-label">Amount:</label>
+                                <input type="number" class="form-control" id="amount" name="amount"></input>
+                            </div>
+                            <div class="mb-3">
+                                <label for="description" class="col-form-label">Description:</label>
+                                <textarea class="form-control" id="description" name="description"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="type" class="col-form-label">Type:</label>
+                                <textarea class="form-control" id="type" name="type"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add Item</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <h5>Sesi terakhir login: {{ last_login }}</h5>
-        
+
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Item by AJAX</button>
+
         <a href="{% url 'main:create_item' %}">
-            <button>
-                Add New Item
-            </button>
+            <button>Add New Item</button>
         </a>
 
         <a href="{% url 'main:logout' %}">
-            <button>
-                Logout
-            </button>
+            <button>Logout</button>
         </a>
     </div>
+
+    <script>
+        async function getItems() {
+            return fetch("{% url 'main:get_item_json' %}").then((res) => res.json())
+        }
+        async function refreshItems() {
+            document.getElementById("item_table").innerHTML = ""
+            const items = await getItems()
+            let htmlString = ""
+            items.forEach((item) => {
+                htmlString += `
+                    <div class="card">
+                            <div class="card-body">
+                                <h2>${item.fields.name}</h2>
+                                <div class="item-description">
+                                    <p>Amount: ${ item.fields.amount }</p>
+                                    <p>Description: ${ item.fields.description }</p>
+                                    <p>Type: ${ item.fields.type }</p>
+                                </div>
+                                <a><button onclick="deleteItem(${item.pk})" type="submit">Remove</button></a>
+                            </div>
+                    </div>` 
+            })
+            
+            document.getElementById("item_table").innerHTML = htmlString
+        }
+        refreshItems()
+
+        function addItem() {
+            fetch("{% url 'main:add_item_ajax' %}", {
+                method: "POST",
+                body: new FormData(document.querySelector('#form'))
+            }).then(refreshItems)
+
+            document.getElementById("form").reset()
+            return false
+        }
+        document.getElementById("button_add").onclick = addItem
+
+        async function deleteItem(id){
+            const formData = new FormData()
+            formData.append("id", id)
+            fetch("{% url 'main:remove_item_ajax' %}", {
+                method: "POST",
+                body: formData
+            }).then(refreshItems)
+            return false
+        }
+    </script>
 
 {% endblock content %}
