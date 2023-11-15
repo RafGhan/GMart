@@ -1447,9 +1447,9 @@ function addItem() {
 
 <details>
 <summary>4. Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada _library_ jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan.</summary>
-```
+
 Fetch API dan jQuery adalah dua teknologi yang digunakan untuk melakukan AJAX pada aplikasi web. Fetch API adalah teknologi JavaScript native yang memungkinkan pengembang web untuk melakukan permintaan HTTP dan menerima respons dari server. Sementara itu, jQuery adalah library JavaScript yang menyediakan fungsi AJAX yang disederhanakan dari fungsi bawaan AJAX yang sudah tertanam pada browser. Untuk PBP kali ini, Fetch API lebih baik untuk digunakan dibandingkan jQuery karena projek yang dikerjakan masih sederhana dan tergolong ringan.
-```
+
 </details>
 
 <details>
