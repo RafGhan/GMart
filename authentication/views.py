@@ -3,7 +3,6 @@ from django.contrib.auth import authenticate, login as auth_login, logout as aut
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
-@csrf_exempt
 def login(request):
     username = request.POST['username']
     password = request.POST['password']
@@ -30,7 +29,6 @@ def login(request):
             "message": "Login gagal, periksa kembali email atau kata sandi."
         }, status=401)
     
-@csrf_exempt
 def logout(request):
     username = request.user.username
 
